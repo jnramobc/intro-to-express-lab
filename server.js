@@ -54,31 +54,31 @@ const shoes = [
 ];
 
 app.get('/shoes', (req, res) => {
-    const minPrice = req.query['min-price'];
-    const maxPrice = req.query['max-price'];
+    const minPrice = req.query['min-price']
+    const maxPrice = req.query['max-price']
     const type = req.query.type;
     let filteredShoes = [];
 
     for (let i = 0; i < shoes.length; i++) {
-        let shoe = shoes[i];
+        let shoe = shoes[i]
         
         if (minPrice && shoe.price < Number(minPrice)) {
-            continue; 
+            continue
         }
         if (maxPrice && shoe.price > Number(maxPrice)) {
-            continue; 
+            continue
         }
 
         if (type && shoe.type !== type) {
-            continue; 
+            continue
         }
 
-        filteredShoes.push(shoe);
+        filteredShoes.push(shoe)
     }
     if (!minPrice && !maxPrice && !type) {
-        filteredShoes = shoes;
+        filteredShoes = shoes
     }
-    res.send(filteredShoes);
+    res.send(filteredShoes)
 });
 
 
